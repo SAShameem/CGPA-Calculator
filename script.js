@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         subjectDiv.innerHTML = `
             <label for="grade${subjectCount}">Total Marks for Subject ${subjectCount}:</label>
-            <input type="number" id="grade${subjectCount}" min="0" max="100" step="1" required>
+            <input type="number" id="grade${subjectCount}" min="0" max="100" step="0.01" required>
             <label for="credits${subjectCount}">Course Credit for Subject ${subjectCount}:</label>
-            <input type="number" id="credits${subjectCount}" min="1" step="1" required>
+            <input type="number" id="credits${subjectCount}" min="0.5" step="0.5" required>
         `;
 
         subjectContainer.appendChild(subjectDiv);
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const creditsInput = subjectDiv.querySelector(`#credits${index + 1}`);
 
             const grade = parseFloat(gradeInput.value);
-            const credits = parseInt(creditsInput.value);
+            const credits = parseFloat(creditsInput.value);
 
             totalGradePoints += (grade / 100) * 4.00 * credits;
             totalCredits += credits;
