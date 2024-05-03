@@ -1,4 +1,24 @@
+function addSubject() {
+    const subjectContainer = document.getElementById("subject-container");
+
+    const subjectDiv = document.createElement("div");
+    subjectDiv.classList.add("form-group");
+
+    const subjectCount = subjectContainer.children.length + 1;
+
+    subjectDiv.innerHTML = `
+        <label for="grade${subjectCount}">Total Marks for Subject ${subjectCount}:</label>
+        <input type="number" id="grade${subjectCount}" min="0" max="100" step="1" required>
+        <label for="credits${subjectCount}">Course Credit for Subject ${subjectCount}:</label>
+        <input type="number" id="credits${subjectCount}" min="1" step="1" required>
+    `;
+
+    subjectContainer.appendChild(subjectDiv);
+}
+
 document.addEventListener("DOMContentLoaded", function() {
+    addSubject(); // Add initial subject input
+
     const form = document.getElementById("cgpa-form");
     const resultDiv = document.getElementById("result");
     const cgpaSpan = document.getElementById("cgpa");
@@ -6,55 +26,25 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        // Get the number of courses
-        const numberOfCourses = form.querySelectorAll(".form-group").length;
-
-        // Initialize variables for total grade points and total credits
         let totalGradePoints = 0;
         let totalCredits = 0;
 
-        // Loop through each course input and calculate grade points
-        for (let i = 1; i <= numberOfCourses; i++) {
-            const gradeInput = document.getElementById("grade" + i);
-            const creditsInput = document.getElementById("credits" + i);
+        const subjectInputs = form.querySelectorAll(".form-group");
+
+        subjectInputs.forEach((subjectDiv, index) => {
+            const gradeInput = subjectDiv.querySelector(`#grade${index + 1}`);
+            const creditsInput = subjectDiv.querySelector(`#credits${index + 1}`);
 
             const grade = parseFloat(gradeInput.value);
             const credits = parseInt(creditsInput.value);
 
-            // Calculate grade points for the current course
-            let gradePoint;
-            if (grade >= 80) {
-                gradePoint = 4.00;
-            } else if (grade >= 75) {
-                gradePoint = 3.75;
-            } else if (grade >= 70) {
-                gradePoint = 3.50;
-            } else if (grade >= 65) {
-                gradePoint = 3.25;
-            } else if (grade >= 60) {
-                gradePoint = 3.00;
-            } else if (grade >= 55) {
-                gradePoint = 2.75;
-            } else if (grade >= 50) {
-                gradePoint = 2.50;
-            } else if (grade >= 45) {
-                gradePoint = 2.25;
-            } else if (grade >= 40) {
-                gradePoint = 2.00;
-            } else {
-                gradePoint = 0.00;
-            }
-
-            // Add grade points and credits to totals
-            totalGradePoints += gradePoint * credits;
+            totalGradePoints += (grade / 100) * 4.00 * credits;
             totalCredits += credits;
-        }
+        });
 
-        // Calculate CGPA
         const cgpa = totalGradePoints / totalCredits;
-
-        // Display the result
-        resultDiv.style.display = "block";
         cgpaSpan.textContent = cgpa.toFixed(2);
+
+        resultDiv.style.display = "block";
     });
 });
