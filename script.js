@@ -17,7 +17,8 @@ function addSubject() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    addSubject(); // Add initial subject input
+    const addButton = document.getElementById("add-subject-btn");
+    addButton.addEventListener("click", addSubject); // Add event listener to the button
 
     const form = document.getElementById("cgpa-form");
     const resultDiv = document.getElementById("result");
