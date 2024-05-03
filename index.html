@@ -10,14 +10,10 @@
     <div class="container">
         <h1>CGPA Calculator</h1>
         <form id="cgpa-form">
-            <div class="form-group">
-                <label for="grade1">Grade for Course 1:</label>
-                <input type="number" id="grade1" min="0" max="100" step="1" required>
-                <label for="credits1">Credits for Course 1:</label>
-                <input type="number" id="credits1" min="1" step="1" required>
+            <div id="subject-container">
+                <!-- Subject inputs will be dynamically added here -->
             </div>
-            <!-- Repeat the above form group for each course -->
-            <!-- Add more courses as needed -->
+            <button type="button" onclick="addSubject()">Add Subject</button>
             <button type="submit">Calculate CGPA</button>
         </form>
         <div id="result" style="display: none;">
