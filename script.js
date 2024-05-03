@@ -1,28 +1,26 @@
-function addSubject() {
-    const subjectContainer = document.getElementById("subject-container");
-
-    const subjectDiv = document.createElement("div");
-    subjectDiv.classList.add("form-group");
-
-    const subjectCount = subjectContainer.children.length + 1;
-
-    subjectDiv.innerHTML = `
-        <label for="grade${subjectCount}">Total Marks for Subject ${subjectCount}:</label>
-        <input type="number" id="grade${subjectCount}" min="0" max="100" step="1" required>
-        <label for="credits${subjectCount}">Course Credit for Subject ${subjectCount}:</label>
-        <input type="number" id="credits${subjectCount}" min="1" step="1" required>
-    `;
-
-    subjectContainer.appendChild(subjectDiv);
-}
-
 document.addEventListener("DOMContentLoaded", function() {
     const addButton = document.getElementById("add-subject-btn");
-    addButton.addEventListener("click", addSubject); // Add event listener to the button
-
-    const form = document.getElementById("cgpa-form");
+    const subjectContainer = document.getElementById("subject-container");
     const resultDiv = document.getElementById("result");
     const cgpaSpan = document.getElementById("cgpa");
+
+    addButton.addEventListener("click", function() {
+        const subjectCount = subjectContainer.children.length + 1;
+
+        const subjectDiv = document.createElement("div");
+        subjectDiv.classList.add("form-group");
+
+        subjectDiv.innerHTML = `
+            <label for="grade${subjectCount}">Total Marks for Subject ${subjectCount}:</label>
+            <input type="number" id="grade${subjectCount}" min="0" max="100" step="1" required>
+            <label for="credits${subjectCount}">Course Credit for Subject ${subjectCount}:</label>
+            <input type="number" id="credits${subjectCount}" min="1" step="1" required>
+        `;
+
+        subjectContainer.appendChild(subjectDiv);
+    });
+
+    const form = document.getElementById("cgpa-form");
 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -30,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let totalGradePoints = 0;
         let totalCredits = 0;
 
-        const subjectInputs = form.querySelectorAll(".form-group");
+        const subjectInputs = subjectContainer.querySelectorAll(".form-group");
 
         subjectInputs.forEach((subjectDiv, index) => {
             const gradeInput = subjectDiv.querySelector(`#grade${index + 1}`);
