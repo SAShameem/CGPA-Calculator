@@ -1,3 +1,13 @@
+// Function to add event listener for remove buttons
+function addRemoveButtonListeners() {
+    const removeButtons = document.querySelectorAll('.remove-subject');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            button.parentElement.remove();
+        });
+    });
+}
+
 document.getElementById('addSubject').addEventListener('click', function() {
     const subjectsDiv = document.getElementById('subjects');
     const subjectDiv = document.createElement('div');
@@ -11,13 +21,11 @@ document.getElementById('addSubject').addEventListener('click', function() {
     subjectsDiv.appendChild(subjectDiv);
     
     // Add event listener to the newly added remove button
-    const removeButtons = document.querySelectorAll('.remove-subject');
-    removeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            button.parentElement.remove();
-        });
-    });
+    addRemoveButtonListeners();
 });
+
+// Initial addition of event listeners
+addRemoveButtonListeners();
 
 document.getElementById('cgpaForm').addEventListener('submit', function(event) {
     event.preventDefault();
