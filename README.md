@@ -3,7 +3,7 @@ A simple web application for calculating Cumulative Grade Point Average (CGPA) b
 
 ## Overview
 
-This project is a CGPA Calculator specifically designed for students studying at Varendra University. It allows students to input their subject names, marks, and credit hours, and calculates their CGPA based on the university's grading system.
+This project is a CGPA Calculator specifically designed for students studying at Varendra University. It allows students to input their subject names, marks, and credit hours and calculates their CGPA based on the university's grading system.
 
 ## Features
 
@@ -14,7 +14,7 @@ This project is a CGPA Calculator specifically designed for students studying at
 
 ## How to Use
 
-1. Visit  in your browser.
+1. Open <a href="https://sobhanlab.github.io/CGPA-Calculator" target="_blank">CGPA Calculator</a> in your browser.</p>
 2. Enter your subject names, marks, and credit hours.
 3. Click on "Calculate CGPA" to see your CGPA.
 
