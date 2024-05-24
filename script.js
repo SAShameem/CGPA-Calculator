@@ -15,7 +15,7 @@ document.getElementById('addSubject').addEventListener('click', function() {
     subjectDiv.innerHTML = `
         <input type="text" placeholder="Subject Name" class="subject-name">
         <input type="number" placeholder="Marks" class="subject-marks">
-        <input type="number" placeholder="Credit Hours" class="subject-credits">
+        <input type="number" placeholder="Credit" class="subject-credits">
         <button type="button" class="remove-subject">X</button>
     `;
     subjectsDiv.appendChild(subjectDiv);
