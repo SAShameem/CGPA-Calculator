@@ -1,15 +1,3 @@
-document.getElementById('addSubject').addEventListener('click', function() {
-    const subjectsDiv = document.getElementById('subjects');
-    const subjectDiv = document.createElement('div');
-    subjectDiv.classList.add('subject');
-    subjectDiv.innerHTML = `
-        <input type="text" placeholder="Subject Name" class="subject-name">
-        <input type="number" placeholder="Marks" class="subject-marks">
-        <input type="number" placeholder="Credit Hours" class="subject-credits">
-    `;
-    subjectsDiv.appendChild(subjectDiv);
-});
-
 document.getElementById('cgpaForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const subjects = document.querySelectorAll('.subject');
