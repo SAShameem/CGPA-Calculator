@@ -1,4 +1,3 @@
-// Function to add event listener for remove buttons
 function addRemoveButtonListeners() {
     const removeButtons = document.querySelectorAll('.remove-subject');
     removeButtons.forEach(button => {
@@ -8,24 +7,35 @@ function addRemoveButtonListeners() {
     });
 }
 
+function updatePlaceholder() {
+    const subjectInputs = document.querySelectorAll('.subject');
+    subjectInputs.forEach(input => {
+        const inputFields = input.querySelectorAll('input');
+        inputFields[0].setAttribute('placeholder', 'Subject');
+        inputFields[1].setAttribute('placeholder', 'Marks');
+        inputFields[2].setAttribute('placeholder', 'Credit');
+    });
+}
+
 document.getElementById('addSubject').addEventListener('click', function() {
     const subjectsDiv = document.getElementById('subjects');
     const subjectDiv = document.createElement('div');
     subjectDiv.classList.add('subject');
     subjectDiv.innerHTML = `
-        <input type="text" placeholder="Subject Name" class="subject-name">
+        <input type="text" placeholder="Subject" class="subject-name">
         <input type="number" placeholder="Marks" class="subject-marks">
         <input type="number" placeholder="Credit" class="subject-credits">
         <button type="button" class="remove-subject">X</button>
     `;
     subjectsDiv.appendChild(subjectDiv);
     
-    // Add event listener to the newly added remove button
+    updatePlaceholder();
+    
     addRemoveButtonListeners();
 });
 
-// Initial addition of event listeners
 addRemoveButtonListeners();
+updatePlaceholder();
 
 document.getElementById('cgpaForm').addEventListener('submit', function(event) {
     event.preventDefault();
