@@ -9,23 +9,19 @@
 <body>
     <div class="container">
         <h1>CGPA Calculator</h1>
-        <form id="cgpa-form">
-            <div id="subject-container">
-                <div class="form-group">
-                    <label for="grade1">Total Marks for Subject 1:</label>
-                    <input type="number" id="grade1" min="0" max="100" step="1" required>
-                    <label for="credits1">Course Credit for Subject 1:</label>
-                    <input type="number" id="credits1" min="1" step="1" required>
+        <form id="cgpaForm">
+            <div id="subjects">
+                <div class="subject">
+                    <input type="text" placeholder="Subject Name" class="subject-name">
+                    <input type="number" placeholder="Marks" class="subject-marks">
+                    <input type="number" placeholder="Credit Hours" class="subject-credits">
                 </div>
             </div>
-            <button type="button" id="add-subject-btn">Add Subject</button>
+            <button type="button" id="addSubject">Add Subject</button>
             <button type="submit">Calculate CGPA</button>
         </form>
-        <div id="result" style="display: none;">
-            <h2>Your CGPA: <span id="cgpa"></span></h2>
-        </div>
+        <div id="result"></div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
