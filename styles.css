@@ -58,3 +58,10 @@ button:hover {
     font-size: 18px;
     text-align: center;
 }
+.footer{
+    padding: 0;
+    align-self:last baseline;
+    text-align: left;
+
+
+}
